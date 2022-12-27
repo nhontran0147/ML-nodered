@@ -32,7 +32,7 @@ module.exports = {
      ******************************************************************************/
 
     /** The file containing the flows. If not set, defaults to flows_<hostname>.json **/
-    flowFile: 'flows.json',
+    flowFile: '/data/flows.json',
 
     /** By default, credentials are encrypted in storage using a generated key. To
      * specify your own secret, set the following property.
@@ -53,12 +53,12 @@ module.exports = {
      * the user's home directory. To use a different location, the following
      * property can be used
      */
-    userDir: '/opt/app-root/src/',
+    userDir: '/data',
 
     /** Node-RED scans the `nodes` directory in the userDir to find local node files.
      * The following property can be used to specify an additional directory to scan.
      */
-    //nodesDir: '/home/nol/.node-red/nodes',
+    // nodesDir: '/data/.node-red/nodes',
 
     /*******************************************************************************
      * Security
@@ -73,14 +73,14 @@ module.exports = {
     /** To password protect the Node-RED editor and admin API, the following
      * property can be used. See http://nodered.org/docs/security.html for details.
      */
-    //adminAuth: {
+    // adminAuth: {
     //    type: "credentials",
     //    users: [{
-    //        username: "admin",
-    //        password: "$2a$08$zZWtXTja0fB1pzD4sHCMyOCMYz2Z6dNbM6tl8sJogENOMcxWV9DN.",
+    //        username: process.env.NODERED_AUTH_ADMIN_USERNAME,
+    //        password: process.env.NODERED_AUTH_ADMIN_PASSWORD,
     //        permissions: "*"
     //    }]
-    //},
+    // },
 
     /** The following property can be used to enable HTTPS
      * This property can be either an object, containing both a (private) key
@@ -137,7 +137,6 @@ module.exports = {
      *  - httpNodeCors
      *  - httpNodeMiddleware
      *  - httpStatic
-     *  - httpStaticRoot
      ******************************************************************************/
 
     /** the tcp port that the Node-RED web server is listening on */
@@ -165,7 +164,7 @@ module.exports = {
      * The following property can be used to specify a different root path.
      * If set to false, this is disabled.
      */
-    //httpAdminRoot: '/admin',
+    // httpAdminRoot: '/admin',
 
     /** The following property can be used to add a custom middleware function
      * in front of all admin http routes. For example, to set custom http
@@ -219,31 +218,12 @@ module.exports = {
     /** When httpAdminRoot is used to move the UI to a different root path, the
      * following property can be used to identify a directory of static content
      * that should be served at http://localhost:1880/.
-     * When httpStaticRoot is set differently to httpAdminRoot, there is no need 
-     * to move httpAdminRoot
      */
-    //httpStatic: '/home/nol/node-red-static/', //single static source
-    /* OR multiple static sources can be created using an array of objects... */
-    //httpStatic: [
-    //    {path: '/home/nol/pics/',    root: "/img/"}, 
-    //    {path: '/home/nol/reports/', root: "/doc/"}, 
-    //],
-
-    /**  
-     * All static routes will be appended to httpStaticRoot
-     * e.g. if httpStatic = "/home/nol/docs" and  httpStaticRoot = "/static/"
-     *      then "/home/nol/docs" will be served at "/static/"
-     * e.g. if httpStatic = [{path: '/home/nol/pics/', root: "/img/"}]
-     *      and httpStaticRoot = "/static/"
-     *      then "/home/nol/pics/" will be served at "/static/img/"
-     */
-    //httpStaticRoot: '/static/',
+    //httpStatic: '/home/nol/node-red-static/',
 
     /*******************************************************************************
      * Runtime Settings
      *  - lang
-     *  - runtimeState
-     *  - diagnostics
      *  - logging
      *  - contextStorage
      *  - exportGlobalContextKeys
@@ -256,51 +236,26 @@ module.exports = {
      */
     // lang: "de",
 
-    /** Configure diagnostics options 
-     * - enabled:  When `enabled` is `true` (or unset), diagnostics data will
-     *   be available at http://localhost:1880/diagnostics  
-     * - ui: When `ui` is `true` (or unset), the action `show-system-info` will 
-     *   be available to logged in users of node-red editor  
-    */
-    diagnostics: {
-        /** enable or disable diagnostics endpoint. Must be set to `false` to disable */
-        enabled: true,
-        /** enable or disable diagnostics display in the node-red editor. Must be set to `false` to disable */
-        ui: true,
-    },
-    /** Configure runtimeState options 
-     * - enabled:  When `enabled` is `true` flows runtime can be Started/Stoped 
-     *   by POSTing to available at http://localhost:1880/flows/state  
-     * - ui: When `ui` is `true`, the action `core:start-flows` and 
-     *   `core:stop-flows` will be available to logged in users of node-red editor
-     *   Also, the deploy menu (when set to default) will show a stop or start button
-     */
-    runtimeState: {
-        /** enable or disable flows/state endpoint. Must be set to `false` to disable */
-        enabled: false,
-        /** show or hide runtime stop/start options in the node-red editor. Must be set to `false` to hide */
-        ui: false,
-    },
     /** Configure the logging output */
-    logging: {
-        /** Only console logging is currently supported */
-        console: {
-            /** Level of logging to be recorded. Options are:
-             * fatal - only those errors which make the application unusable should be recorded
-             * error - record errors which are deemed fatal for a particular request + fatal errors
-             * warn - record problems which are non fatal + errors + fatal errors
-             * info - record information about the general running of the application + warn + error + fatal errors
-             * debug - record information which is more verbose than info + info + warn + error + fatal errors
-             * trace - record very detailed logging + debug + info + warn + error + fatal errors
-             * off - turn off all logging (doesn't affect metrics or audit)
-             */
-            level: "info",
-            /** Whether or not to include metric events in the log output */
-            metrics: false,
-            /** Whether or not to include audit events in the log output */
-            audit: false
-        }
-    },
+    // logging: {
+    //     /** Only console logging is currently supported */
+    //     console: {
+    //         /** Level of logging to be recorded. Options are:
+    //          * fatal - only those errors which make the application unusable should be recorded
+    //          * error - record errors which are deemed fatal for a particular request + fatal errors
+    //          * warn - record problems which are non fatal + errors + fatal errors
+    //          * info - record information about the general running of the application + warn + error + fatal errors
+    //          * debug - record information which is more verbose than info + info + warn + error + fatal errors
+    //          * trace - record very detailed logging + debug + info + warn + error + fatal errors
+    //          * off - turn off all logging (doesn't affect metrics or audit)
+    //          */
+    //         level: "info",
+    //         /** Whether or not to include metric events in the log output */
+    //         metrics: false,
+    //         /** Whether or not to include audit events in the log output */
+    //         audit: false
+    //     }
+    // },
 
     /** Context Storage
      * The following property can be used to enable context storage. The configuration
@@ -361,7 +316,7 @@ module.exports = {
      * is not affected by this option. To disable both the editor and the admin
      * API, use either the httpRoot or httpAdminRoot properties
      */
-    disableEditor: false,
+    //disableEditor: false,
 
     /** Customising the editor
      * See https://nodered.org/docs/user-guide/runtime/configuration#editor-themes
@@ -404,9 +359,9 @@ module.exports = {
 
         codeEditor: {
             /** Select the text editor component used by the editor.
-             * As of Node-RED V3, this defaults to "monaco", but can be set to "ace" if desired
+             * Defaults to "ace", but can be set to "ace" or "monaco"
              */
-            lib: "monaco",
+            lib: "ace",
             options: {
                 /** The follow options only apply if the editor is set to "monaco"
                  *
@@ -414,9 +369,9 @@ module.exports = {
                  * packages/node_modules/@node-red/editor-client/src/vendor/monaco/dist/theme
                  * e.g. "tomorrow-night", "upstream-sunburst", "github", "my-theme"
                  */
-                // theme: "vs",
+                theme: "vs",
                 /** other overrides can be set e.g. fontSize, fontFamily, fontLigatures etc.
-                 * for the full list, see https://microsoft.github.io/monaco-editor/api/interfaces/monaco.editor.IStandaloneEditorConstructionOptions.html
+                 * for the full list, see https://microsoft.github.io/monaco-editor/api/interfaces/monaco.editor.istandaloneeditorconstructionoptions.html
                  */
                 //fontSize: 14,
                 //fontFamily: "Cascadia Code, Fira Code, Consolas, 'Courier New', monospace",

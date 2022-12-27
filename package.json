@@ -4,8 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node-red",
+    "start": "node $NODE_OPTIONS node_modules/node-red/red.js $FLOWS --userDir=/data",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "url": "https://github.com/nhontran0147/ML-nodered"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +16,7 @@
   "dependencies": {
     "@tensorflow/tfjs-node": "^4.1.0",
     "node-red": "^3.0.2",
+    "node-red-dashboard": "*",
     "node-red-contrib-tfjs-tutorial": "file:node-red-contrib-tfjs-tutorial"
   }
 }
