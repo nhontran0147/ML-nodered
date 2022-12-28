@@ -17,6 +17,7 @@
     "@tensorflow/tfjs-node": "^4.1.0",
     "node-red": "^3.0.2",
     "node-red-dashboard": "*",
-    "node-red-contrib-iot-demo": "git+https://github.com/ginn1111/node-red-contrib-iot-demo.git"
+    "yalc": "*",
+    "node-red-contrib-tfjs": "git+https://github.com/ginn1111/node-red-contrib-iot-demo.git"
   }
 }
