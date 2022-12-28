@@ -2,14 +2,18 @@
   "name": "node-red-contrib-tfjs-tutorial",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "keywords": [
+    "node-red",
+    "contrib",
+    "tfjs"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "nhontran0147",
+  "license": "MIT",
   "peerDependencies": {
-    "@tensorflow/tfjs-node": "^4.1.0"
+    "@tensorflow/tfjs-node": "^1.2.7"
   },
   "node-red": {
     "nodes": {

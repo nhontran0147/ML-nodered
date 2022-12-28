@@ -14,10 +14,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@tensorflow/tfjs-node": "^4.1.0",
+    "@tensorflow/tfjs-node": "^1.2.7",
     "node-red": "^3.0.2",
     "node-red-dashboard": "*",
     "yalc": "*",
-    "node-red-contrib-tfjs": "git+https://github.com/ginn1111/node-red-contrib-iot-demo.git"
+    "node-red-contrib-image-output": "^0.6.3",
+    "node-red-contrib-browser-utils": "^0.0.11",
+    "node-red-node-annotate-image": "^0.1.2",
+    "node-red-contrib-play-sound": "^0.2.0",
+    "node-red-contrib-play-soundfile": "^0.0.4",
+    "node-red-contrib-tfjs": "https://github.com/nhontran0147/node-red-contrib-tfjs.git"
   }
 }
